@@ -14,7 +14,7 @@ NSEsus accepts two positional arguments.
 
 ## About / License
 
-I threw this script together while I was working on the OSCP certification. This initial release contains some minor improvements, but the core remains largely unchanged.
+I threw this script together while working on the OSCP certification. This initial release contains some minor improvements, but the core remains largely unchanged.
 
 Licensed under [Apache 2.0](https://github.com/TheAirship/NSEsus/blob/main/LICENSE)
 Bugs and issues can be submitted on the [Issues Page](https://github.com/TheAirship/NSEsus/issues)  
