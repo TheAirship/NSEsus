@@ -2,7 +2,7 @@
 
 NSEsus is a very basic, very janky Shell script that emulates a vulnerability scanner by automating and reporting on the results of certain Nmap Scripting Engine (NSE) scripts. This is not meant to replace a proper vulnerability scanner in any way, but it may be helpful when a proper scanner can't be deployed.
 
-NSEsus checks for HTTP vulnerabilities on TCP 80, SMTP vulnerabilities on TCP 25, and SMB vulnerabilities on TCP 139 and 445.
+NSEsus checks for HTTP vulnerabilities on TCP 80, SMTP vulnerabilities on TCP 25, and SMB vulnerabilities on TCP 139 and 445. Nmap is required for this script to operate properly.
 
 ## Usage
 
