@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# NSUsus - An ersatz vulnerability scanner built on Nmap Scanning Engine (NSE)
+# Version 1.0
+# More info: https://www.github.com/theairship/NSEsus
+
 declare -A scanTypes
 
 scanTypes=( ["80"]="http.*vuln" ["25"]="smtp.*vuln" ["139,445"]="smb.*vuln" )
@@ -24,16 +28,16 @@ fi
 for sType in "${!scanTypes[@]}"; do
     foundServers=$(nmap -sS -v -p $sType $1 2>/dev/null | grep 'Host is up' -B1 | grep -v Host | cut -d" " -f5)
     fRegex='OS: (.*) \| (OS | Com)'
-    echo "Scanning for port $sType"
-    #echo "Found the following servers: $foundServers"
+    echo "[INFO] The following servers responded: $foundServers"
 	for server in $foundServers; do
 		if [ $server != "--" ]; then
-			echo "-----SCANNING $server-----"
+			echo "[INFO] Checking for vulnerabilities on $server, TCP $sType"
 			for vScript in $(ls $nmapDir | grep "${scanTypes[$sType]}"); do
+				echo -n "[STATUS] Checking $vScript"
 				if [ "$(nmap -v -p $sType $server --script $vScript | grep "VULNERABLE:")" ]; then
-					echo "Vulnerable to $vScript? SURE IS!"
-				#else
-					#echo "Vulnerable to $vScript? Nope."
+					echo " - VULNERABLE!"
+				else
+					echo " - Not Vulnerable"
 				fi
 			done
 		fi
